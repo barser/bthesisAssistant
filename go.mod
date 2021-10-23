@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/gen2brain/beeep v0.0.0-20210529141713-5586760f0cc1
+	github.com/gen2brain/dlgs v0.0.0-20210911090025-cbd38e821b98
 	github.com/getlantern/systray v1.1.0
 )
 

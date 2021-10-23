@@ -7,6 +7,7 @@ import (
 
 const title string = "Тезис-Помощник"
 
+// Inform shows notification with specified text in it in the corner of desktop
 func Inform(text string) {
 
 	err := beeep.Notify(title, text, "assets/borets.png")

@@ -4,6 +4,7 @@ import (
 	"github.com/getlantern/systray"
 )
 
+// Run system tray menu
 func Run() {
 	systray.Run(onReady, onExit)
 }
