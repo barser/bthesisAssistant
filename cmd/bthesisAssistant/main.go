@@ -4,6 +4,9 @@ import (
 	"bthesisAssistant/internal/notification"
 	"bthesisAssistant/internal/tray"
 	"fmt"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 	"github.com/gen2brain/dlgs"
 	"log"
 	"os"
@@ -43,15 +46,29 @@ func main() {
 
 	go tray.Run()
 
-	for {
+	breakFor := false
+	for !breakFor {
 		select {
 		case v := <-cc:
 			if v > 2 {
-				os.Exit(0)
+				//os.Exit(0)
+				breakFor = true
 			} else {
 				time.Sleep(2 * time.Second)
 				tc <- time.Now()
 			}
 		}
 	}
+
+	a := app.New()
+	w := a.NewWindow("Hello")
+
+	hello := widget.NewLabel("Hello Fyne!")
+	w.SetContent(container.NewVBox(
+		hello,
+		widget.NewButton("Hi!", func() {
+			hello.SetText("Welcome :)")
+		}),
+	))
+	w.ShowAndRun()
 }
